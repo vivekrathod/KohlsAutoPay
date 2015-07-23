@@ -132,6 +132,11 @@ class Kohls
 			puts 'found Submit payment button'
 			@session.click_button 'Submit'
 		end
+		
+		if @session.has_button?('PayApproveButton')
+			puts 'found pay approve button'
+			@session.click_button 'PayApproveButton'
+		end
 	end
 	
 	def emailScreenshot(sub, msg)
@@ -168,7 +173,7 @@ begin
 	currentBalance = kohls.getCurrentBalance
 	if ( currentBalance > 0)
 		kohls.makeCurrentPayment
-		kohls.emailScreenshot 'kohls autopayment was successfully submitted', 'current balance of #{currentBalance} was paid suceessfully, screenshot attached..'
+		kohls.emailScreenshot "kohls autopayment was successfully submitted", "current balance of #{currentBalance} was paid suceessfully, screenshot attached.."
 	end
 rescue Exception => e
 	puts 'error..' 
