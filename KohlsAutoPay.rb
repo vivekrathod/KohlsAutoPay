@@ -117,7 +117,7 @@ class Kohls
 			raise 'unable to find current balance'
 		end
 		currentBalance = @session.find(:xpath, '//*[@id="paymentAmountSection"]/tbody/tr[4]/td[4]').text
-		currentBalance = currentBalance.gsub(/[^\d\.]/, '').to_f
+		currentBalance = currentBalance.gsub(/[^\d\.-]/, '').to_f
 		puts "current balance is #{currentBalance}"
 		return currentBalance
 	end
